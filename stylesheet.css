@@ -117,6 +117,14 @@ h2 {
   /* font-weight: bold; */
 }
 
+.research-interest {
+  margin: 4px 0;
+}
+
+.research-interest-title {
+  margin: 0 0 4px 0;
+}
+
 .one {
   width: 160px;
   height: 160px;
