@@ -5,65 +5,240 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <title>Demo Preview</title>
+  <meta name="theme-color" content="#fafafa">
+  <title>Manipulation Demos</title>
   <style>
-    :root { color-scheme: light; --fg: #172023; --muted: #687478; --edge: #e0e5e6; --surface: #f3f5f5; }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: white; color: var(--fg); font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    main { max-width: 1150px; padding: 64px 30px 96px; margin: auto; }
-    h1 { margin: 0 0 8px; font-size: clamp(34px, 5vw, 56px); letter-spacing: -.055em; line-height: 1.1; font-weight: 650; }
-    .intro { margin: 0; color: var(--muted); font-size: 16px; }
-    section { margin-top: 54px; }
-    h2 { font-size: 17px; letter-spacing: -.015em; font-weight: 650; margin: 0 0 16px; }
-    figure { margin: 0; }
-    .media { display: grid; place-items: center; aspect-ratio: 16 / 9; background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; }
-    .media > .placeholder { text-align: center; color: #8b9498; font-size: 13px; }
-    .placeholder .symbol { display: block; width: 42px; height: 42px; border: 1.5px solid #aeb7bb; border-radius: 50%; font-size: 18px; line-height: 39px; margin: 0 auto 8px; padding-left: 2px; }
-    video { width: 100%; height: 100%; background: #111; object-fit: contain; }
-    figcaption { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
-    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .media[data-video] .placeholder { display: none; }
-    footer { border-top: 1px solid var(--edge); margin-top: 60px; padding-top: 20px; color: #9ba4a7; font-size: 12px; }
-    @media (max-width: 700px) { main { padding: 34px 18px 60px; } section { margin-top: 36px; } .gallery { grid-template-columns: 1fr; gap: 24px; } }
+    :root {
+      --paper: #fafafa;
+      --ink: #1d1d1f;
+      --secondary: #6e6e73;
+      --card: #fff;
+      --stroke: #e8e8eb;
+      --cardinal: #8c1515;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 70px 28px 100px;
+    }
+    .masthead {
+      padding: 0 0 36px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 17px;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+    .eyebrow::before {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--cardinal);
+      border-radius: 2px;
+    }
+    h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 620;
+      line-height: 1.08;
+      letter-spacing: -.055em;
+      margin: 0;
+    }
+    .intro {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.4;
+      color: var(--secondary);
+      margin: 14px 0 0;
+    }
+    .group { margin-top: 46px; }
+    .group-title {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+    .group-title::before {
+      content: "";
+      height: 1px;
+      width: 30px;
+      flex: 0 0 30px;
+      background: var(--cardinal);
+    }
+    h2 {
+      font-size: clamp(21px, 3vw, 28px);
+      font-weight: 615;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .tile {
+      margin: 0;
+      padding: 12px 12px 15px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 21px;
+      box-shadow: 0 4px 22px rgba(0,0,0,.035);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .tile:hover {
+      transform: translateY(-2px);
+      border-color: #dfcaca;
+      box-shadow: 0 12px 28px rgba(0,0,0,.065);
+    }
+    .media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #f7f7f8, #ededf0);
+      color: #a1a1a6;
+      border: 1px solid rgba(0,0,0,.035);
+    }
+    .placeholder { text-align: center; font-size: 12px; }
+    .play {
+      display: grid;
+      place-items: center;
+      border: 1px solid #dcdce0;
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 9px;
+      border-radius: 50%;
+      font-size: 17px;
+      color: #74747a;
+      padding-left: 3px;
+      background: rgba(255,255,255,.82);
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #111;
+    }
+    figcaption {
+      color: var(--secondary);
+      padding: 12px 4px 0;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+    footer {
+      margin-top: 57px;
+      padding-top: 20px;
+      border-top: 1px solid var(--stroke);
+      color: #a1a1a6;
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity .65s ease, transform .65s cubic-bezier(.22,.7,.2,1);
+      }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 700px) {
+      main { padding: 42px 16px 60px; }
+      .group { margin-top: 34px; }
+      .grid { grid-template-columns: 1fr; gap: 18px; }
+      .tile { border-radius: 16px; padding: 8px 8px 12px; }
+      .media { border-radius: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .tile { transition: none; }
+    }
   </style>
 </head>
 <body>
 <main>
-  <header>
+  <header class="masthead">
+    <div class="eyebrow">Demo preview</div>
     <h1>Manipulation demos</h1>
-    <p class="intro">A few selected videos. More coming soon.</p>
+    <p class="intro">Teleoperation, object pickup, and data collection.</p>
   </header>
 
-  <section aria-labelledby="live-title">
-    <h2 id="live-title">Live glove-guided control</h2>
-    <figure>
-      <div class="media" id="glove"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div>
+  <section class="group reveal" aria-labelledby="live-title">
+    <div class="group-title"><h2 id="live-title">Live glove-guided control</h2></div>
+    <figure class="tile">
+      <div class="media" id="glove"><div class="placeholder"><span class="play" aria-hidden="true">▶</span>Video coming soon</div></div>
       <figcaption>Real-time manipulation guided by human glove input.</figcaption>
     </figure>
   </section>
 
-  <section aria-labelledby="pickup-title">
-    <h2 id="pickup-title">Object pickup</h2>
-    <div class="gallery">
-      <figure><div class="media" id="pickup1"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 01</figcaption></figure>
-      <figure><div class="media" id="pickup2"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 02</figcaption></figure>
-      <figure><div class="media" id="pickup3"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 03</figcaption></figure>
+  <section class="group reveal" aria-labelledby="pickup-title">
+    <div class="group-title"><h2 id="pickup-title">Object pickup</h2></div>
+    <div class="grid">
+      <figure class="tile">
+        <div class="media" id="pickup1"><div class="placeholder"><span class="play" aria-hidden="true">▶</span>Video coming soon</div></div>
+        <figcaption>3D-printed object · 01</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="media" id="pickup2"><div class="placeholder"><span class="play" aria-hidden="true">▶</span>Video coming soon</div></div>
+        <figcaption>3D-printed object · 02</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="media" id="pickup3"><div class="placeholder"><span class="play" aria-hidden="true">▶</span>Video coming soon</div></div>
+        <figcaption>3D-printed object · 03</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section aria-labelledby="collection-title">
-    <h2 id="collection-title">Data collection setup</h2>
-    <figure>
-      <div class="media" id="collection"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div>
-      <figcaption>Recording hand–object interaction demonstrations.</figcaption>
+  <section class="group reveal" aria-labelledby="data-title">
+    <div class="group-title"><h2 id="data-title">Data collection setup</h2></div>
+    <figure class="tile">
+      <div class="media" id="collection"><div class="placeholder"><span class="play" aria-hidden="true">▶</span>Video coming soon</div></div>
+      <figcaption>Recording human hand–object interactions.</figcaption>
     </figure>
   </section>
+
   <footer>Demo preview</footer>
 </main>
-<!-- Once the five reviewed, privacy-checked videos are ready, replace the relevant
-     placeholder div contents with:
-     <video controls playsinline preload="metadata" src="videos/glove.mp4"></video>
-     and use pickup1.mp4, pickup2.mp4, pickup3.mp4, collection.mp4 for the other slots.
-     Do not publish raw recordings before checking visible identifiers and audio. -->
+<!-- Reserved video paths, to be wired up after reviewing footage:
+  videos/glove.mp4
+  videos/pickup1.mp4
+  videos/pickup2.mp4
+  videos/pickup3.mp4
+  videos/collection.mp4
+-->
+<script>
+  const panels = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      for (const item of entries) {
+        if (item.isIntersecting) {
+          item.target.classList.add('is-visible');
+          observer.unobserve(item.target);
+        }
+      }
+    }, {threshold: 0.06});
+    panels.forEach(panel => observer.observe(panel));
+  } else {
+    panels.forEach(panel => panel.classList.add('is-visible'));
+  }
+</script>
 </body>
 </html>
