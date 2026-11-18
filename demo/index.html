@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Demo Preview</title>
+  <style>
+    :root { color-scheme: light; --fg: #172023; --muted: #687478; --edge: #e0e5e6; --surface: #f3f5f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: white; color: var(--fg); font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 1150px; padding: 64px 30px 96px; margin: auto; }
+    h1 { margin: 0 0 8px; font-size: clamp(34px, 5vw, 56px); letter-spacing: -.055em; line-height: 1.1; font-weight: 650; }
+    .intro { margin: 0; color: var(--muted); font-size: 16px; }
+    section { margin-top: 54px; }
+    h2 { font-size: 17px; letter-spacing: -.015em; font-weight: 650; margin: 0 0 16px; }
+    figure { margin: 0; }
+    .media { display: grid; place-items: center; aspect-ratio: 16 / 9; background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; }
+    .media > .placeholder { text-align: center; color: #8b9498; font-size: 13px; }
+    .placeholder .symbol { display: block; width: 42px; height: 42px; border: 1.5px solid #aeb7bb; border-radius: 50%; font-size: 18px; line-height: 39px; margin: 0 auto 8px; padding-left: 2px; }
+    video { width: 100%; height: 100%; background: #111; object-fit: contain; }
+    figcaption { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .media[data-video] .placeholder { display: none; }
+    footer { border-top: 1px solid var(--edge); margin-top: 60px; padding-top: 20px; color: #9ba4a7; font-size: 12px; }
+    @media (max-width: 700px) { main { padding: 34px 18px 60px; } section { margin-top: 36px; } .gallery { grid-template-columns: 1fr; gap: 24px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Manipulation demos</h1>
+    <p class="intro">A few selected videos. More coming soon.</p>
+  </header>
+
+  <section aria-labelledby="live-title">
+    <h2 id="live-title">Live glove-guided control</h2>
+    <figure>
+      <div class="media" id="glove"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div>
+      <figcaption>Real-time manipulation guided by human glove input.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="pickup-title">
+    <h2 id="pickup-title">Object pickup</h2>
+    <div class="gallery">
+      <figure><div class="media" id="pickup1"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 01</figcaption></figure>
+      <figure><div class="media" id="pickup2"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 02</figcaption></figure>
+      <figure><div class="media" id="pickup3"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div><figcaption>Pickup demonstration · object 03</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="collection-title">
+    <h2 id="collection-title">Data collection setup</h2>
+    <figure>
+      <div class="media" id="collection"><div class="placeholder"><span class="symbol" aria-hidden="true">▶</span>Video pending</div></div>
+      <figcaption>Recording hand–object interaction demonstrations.</figcaption>
+    </figure>
+  </section>
+  <footer>Demo preview</footer>
+</main>
+<!-- Once the five reviewed, privacy-checked videos are ready, replace the relevant
+     placeholder div contents with:
+     <video controls playsinline preload="metadata" src="videos/glove.mp4"></video>
+     and use pickup1.mp4, pickup2.mp4, pickup3.mp4, collection.mp4 for the other slots.
+     Do not publish raw recordings before checking visible identifiers and audio. -->
+</body>
+</html>
