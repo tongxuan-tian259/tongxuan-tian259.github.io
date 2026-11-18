@@ -70,28 +70,30 @@
     .group-title {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
+      justify-content: flex-start;
+      gap: 15px;
       width: 100%;
       margin-bottom: 16px;
     }
-    .group-title::before,
+    .group-title::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 30px;
+      flex: 0 0 30px;
+      background: var(--cardinal);
+    }
     .group-title::after {
       content: "";
       display: block;
       height: 1px;
-      flex: 1 1 0;
+      flex: 1 1 auto;
       min-width: 12px;
-    }
-    .group-title::before {
-      background: linear-gradient(to right, rgba(140,21,21,.18), var(--cardinal));
-    }
-    .group-title::after {
-      background: linear-gradient(to left, rgba(140,21,21,.18), var(--cardinal));
+      background: linear-gradient(to right, var(--cardinal), rgba(140,21,21,.12));
     }
     .group-title h2 {
-      text-align: center;
-      flex: 0 1 auto;
+      text-align: left;
+      flex: 0 0 auto;
     }
     h2 {
       font-size: clamp(21px, 3vw, 28px);
